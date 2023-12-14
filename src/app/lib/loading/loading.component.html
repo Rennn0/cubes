@@ -1,0 +1,21 @@
+<div class="make-it-centered" (mouseover)="startAnimation()" (mouseout)="stopAnimation()">
+    <div class="container">
+        <div class="left">
+            <p-messages 
+                [(value)]="messages" 
+                [enableService]="false" 
+                [closable]="true"
+                [showTransitionOptions]="'500ms'"
+                [hideTransitionOptions]="'500ms'">
+            </p-messages>
+            <span class="p-input-icon-right p-float-label">
+                <i class="pi pi-spin pi-spinner" *ngIf="showIcon"></i>
+                <input type="text" pInputText [formControl]="projectName" (keydown.enter)="onEnterKeyPress()"  />
+                <label for="title">Name for new project</label>
+            </span>
+        </div>
+        <div class="right">
+            <canvas #myCanvas class="myCanvas"></canvas>    
+        </div>
+    </div>
+</div>

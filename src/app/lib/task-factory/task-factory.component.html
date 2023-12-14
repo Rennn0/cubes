@@ -1,0 +1,38 @@
+<p-toggleButton 
+    [(ngModel)]="newTaskSwitch" 
+    [onLabel]="'New Module'" 
+    [offLabel]="'Delete'" 
+    [onIcon]="'pi pi-plus'" 
+    [offIcon]="'pi pi-trash'"
+    [style]="{margin:'21px 20px 5px 21px'}"
+>
+</p-toggleButton>
+
+<ng-container *ngIf="!newTaskSwitch; else existingTasksList">
+    <div style="padding: 25px;">
+        <app-form
+        [form]="form"
+        [subtasks]="subtasks"
+        (ENewTaskCreated)="onTaskModelCreated($event)">
+        </app-form>
+    </div>
+</ng-container>
+
+<ng-template #existingTasksList>
+    <p-scrollPanel [style]="{ width: '--webkit-fill-available', height: '85vh', margin:'30px 20px' }">
+        <p-accordion>
+            <ng-container *ngFor="let model of existingTasks">
+                <p-accordionTab 
+                    [header]=model.title 
+                    pDraggable 
+                    [dragEffect]="'move'" 
+                    (onDragStart)="dragStart(model)" 
+                    (onDragEnd)="dragEnd()">
+                    <p>
+                        {{model.description}}
+                    </p>
+                </p-accordionTab>
+            </ng-container>   
+        </p-accordion>
+    </p-scrollPanel> 
+</ng-template>

@@ -1,0 +1,29 @@
+import { Injectable } from "@angular/core";
+import { ISubtask, ITaskModel, TaskModel } from "./setup";
+
+@Injectable({
+    providedIn: "root"
+}) export class MainService {
+    private _dataToDrag: ITaskModel = new TaskModel();
+    private _draggingIsActive: boolean = false;
+
+    constructor() { }
+
+    public SeedData(): ISubtask[] {
+        return Array.from({ length: 10 }, (v: string, k) => ({ name: `Subtask${k}`, weight: k }))
+    }
+
+    public DragStarted(data: ITaskModel): void { // call 1
+        this._draggingIsActive = true;
+        this._dataToDrag = data;
+    }
+
+    public DragEnded(): void { // if ok call 3 else 2
+        this._draggingIsActive = false;
+        this._dataToDrag = new TaskModel();
+    }
+
+    public Drop(): TaskModel { // if ok call 2 else no call
+        return this._dataToDrag;
+    }
+}

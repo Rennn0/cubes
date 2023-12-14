@@ -1,0 +1,46 @@
+<form [formGroup]="form">
+        <span class="p-float-label" style="margin: 20px auto;">
+            <input 
+                pInputText 
+                type="text"
+                id="title" 
+                formControlName="title" 
+                />
+            <label for="title">Title</label>
+        </span>
+
+        <p-chips 
+            formControlName="team" 
+            [separator]="','"
+            [placeholder]="'Team members...'"
+            [style]="{marginBottom:'20px',width:'-webkit-fill-available'}">
+            <ng-template let-item pTemplate="item">
+                <i class="pi pi-user" style="margin-right: 5px;"></i> {{ item }} 
+            </ng-template>
+        </p-chips>
+
+        <p-multiSelect 
+            formControlName="subtasks" 
+            optionLabel="name"
+            [options]="subtasks"
+            [style]="{marginBottom:'20px',width:'-webkit-fill-available'}">
+        </p-multiSelect>
+
+        <textarea 
+            rows="5" 
+            cols="30" 
+            pInputTextarea 
+            formControlName="description"
+            [placeholder]="'Description'"
+            [style]="{marginBottom:'20px',width:'-webkit-fill-available'}">
+            >
+        </textarea>
+
+        <p-button 
+            label="LogForm" 
+            [text]="true" 
+            [raised]="true" 
+            (onClick)="emitTaskModelCreated()"
+            [style]="{marginBottom:'20px',width:'-webkit-fill-available'}">
+        </p-button>
+</form>

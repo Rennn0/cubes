@@ -1,0 +1,25 @@
+.skeleton-container{
+    width: 100%;
+    height: 98vh;
+    display: flex;   
+}
+
+.skeleton-left{
+    width: 20%;
+    height: 100%;
+}
+
+.skeleton-right{
+    width: 80%;
+    height: 100%;
+}
+
+.skeleton-up{
+    width: 100%;
+    height: 15%;
+}
+
+.skeleton-down{
+    width: 100%;
+    height: 85%;
+}
