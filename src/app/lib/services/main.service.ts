@@ -10,7 +10,7 @@ import { ISubtask, ITaskModel, TaskModel } from "./setup";
     constructor() { }
 
     public SeedData(): ISubtask[] {
-        return Array.from({ length: 10 }, (v: string, k) => ({ name: `Subtask${k}`, weight: k }))
+        return Array.from({ length: 10 }, (v: string, k) => ({ name: `Submodule ${k}`, weight: k }))
     }
 
     public DragStarted(data: ITaskModel): void { // call 1

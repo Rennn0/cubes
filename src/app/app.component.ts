@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MainService } from '@lib/services/main.service';
 import { ISubtask } from '@lib/services/setup';
 import { PrimeNGConfig } from 'primeng/api';
@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   for_TF_Form!: FormGroup;
   for_TF_Subtasks!: ISubtask[];
   //input data for Toolbox
-  for_T_ProjectName: string = ""
+  for_T_ProjectName: string = "random title"
 
 
   loading: boolean = true;
@@ -30,10 +30,12 @@ export class AppComponent implements OnInit {
       tooltip: 1100   // tooltip
     };
     this.for_TF_Form = new FormGroup({
-      title: new FormControl(''),
+      title: new FormControl('', [Validators.required]),
       team: new FormControl([]),
       subtasks: new FormControl([]),
-      description: new FormControl('')
+      description: new FormControl(''),
+      selectedSubModules: new FormControl([]),
+      techStack: new FormControl([])
     });
     this.for_TF_Subtasks = this._main.SeedData();
   }
@@ -43,6 +45,6 @@ export class AppComponent implements OnInit {
     this.for_T_ProjectName = name;
     setTimeout(() => {
       this.displaySkeleton = false;
-    }, 1111);
+    }, 1777);
   }
 }

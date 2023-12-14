@@ -1,5 +1,5 @@
 <form [formGroup]="form">
-        <span class="p-float-label" style="margin: 20px auto;">
+        <span class="p-float-label p-fluid" style="margin: 20px auto;">
             <input 
                 pInputText 
                 type="text"
@@ -8,22 +8,33 @@
                 />
             <label for="title">Title</label>
         </span>
-
+        
+        <p-autoComplete 
+            formControlName="selectedSubModules" 
+            [suggestions]="items" 
+            (completeMethod)="filterList($event)" 
+            [multiple]="true"
+            [style]="{marginBottom:'20px',width:'-webkit-fill-available'}"
+            [styleClass]="'p-fluid'">
+        </p-autoComplete>
+        
         <p-chips 
             formControlName="team" 
             [separator]="','"
             [placeholder]="'Team members...'"
-            [style]="{marginBottom:'20px',width:'-webkit-fill-available'}">
+            [style]="{marginBottom:'20px',width:'-webkit-fill-available'}"
+            class="p-fluid">
             <ng-template let-item pTemplate="item">
                 <i class="pi pi-user" style="margin-right: 5px;"></i> {{ item }} 
             </ng-template>
         </p-chips>
 
         <p-multiSelect 
-            formControlName="subtasks" 
+            formControlName="techStack" 
             optionLabel="name"
-            [options]="subtasks"
-            [style]="{marginBottom:'20px',width:'-webkit-fill-available'}">
+            [options]="techStack"
+            [style]="{marginBottom:'20px',width:'-webkit-fill-available'}"
+            [placeholder]="'Tech Stack...'">
         </p-multiSelect>
 
         <textarea 
@@ -31,16 +42,24 @@
             cols="30" 
             pInputTextarea 
             formControlName="description"
-            [placeholder]="'Description'"
+            [placeholder]="'Description...'"
             [style]="{marginBottom:'20px',width:'-webkit-fill-available'}">
             >
         </textarea>
 
         <p-button 
-            label="LogForm" 
+            label="Add" 
             [text]="true" 
             [raised]="true" 
             (onClick)="emitTaskModelCreated()"
+            [style]="{marginBottom:'20px',width:'-webkit-fill-available'}">
+        </p-button>
+        
+        <p-button 
+            label="Add" 
+            [text]="true" 
+            [raised]="true" 
+            (onClick)="logForm()"
             [style]="{marginBottom:'20px',width:'-webkit-fill-available'}">
         </p-button>
 </form>

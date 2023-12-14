@@ -38,7 +38,8 @@
           <p-splitter layout="vertical" [panelSizes]="[10, 90]" [minSizes]="[10,90]">
               <ng-template pTemplate >
                   <div style="flex-grow: 1;" >
-                    <app-toolbox>
+                    <app-toolbox
+                    [projectName]="for_T_ProjectName">
                       
                     </app-toolbox>
                   </div>

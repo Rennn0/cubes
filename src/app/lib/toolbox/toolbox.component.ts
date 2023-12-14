@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -7,6 +7,7 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./toolbox.component.css']
 })
 export class ToolboxComponent {
+  @Input() projectName: string = "";
   items: MenuItem[] | undefined;
 
   ngOnInit() {

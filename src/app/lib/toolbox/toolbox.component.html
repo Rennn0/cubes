@@ -1,15 +1,13 @@
 <p-toolbar>
-    <div class="p-toolbar-group-end">
+    <div>
         <p-splitButton label="Save" icon="pi pi-check" [model]="items"></p-splitButton>
     </div>
-    <!-- <div class="p-toolbar-group-center">
-        <span class="p-input-icon-left">
-            <i class="pi pi-search"></i>
-            <input pInputText placeholder="Search" />
-        </span>
-    </div> -->
+    <div class="p-toolbar-group-center" style="font-size: xxx-large;">
+        <i class="pi pi-box" ></i>
+        <span>{{projectName}}</span>
+    </div>
     
-    <div class="p-toolbar-group-start">
+    <div>
         <button pButton icon="pi pi-plus" class="mr-2"></button>
         <button pButton icon="pi pi-print" class="mr-2"></button>
         <button pButton icon="pi pi-upload"></button>

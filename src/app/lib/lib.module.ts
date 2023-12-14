@@ -20,6 +20,7 @@ import { SplitButtonModule } from 'primeng/splitbutton'
 import { CardModule } from 'primeng/card';
 import { SkeletonModule } from 'primeng/skeleton';
 import { MessagesModule } from 'primeng/messages';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 //local components
 import { TaskFactoryComponent } from "./task-factory/task-factory.component";
@@ -50,6 +51,7 @@ import { MainService } from "./services/main.service";
         BrowserAnimationsModule,
         CommonModule,
         MessagesModule,
+        AutoCompleteModule,
         ReactiveFormsModule,
         ToggleButtonModule,
         FormsModule,

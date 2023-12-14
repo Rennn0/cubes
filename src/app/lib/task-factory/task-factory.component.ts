@@ -18,18 +18,10 @@ export class TaskFactoryComponent implements OnInit {
 
   constructor(private _main: MainService) { }
   ngOnInit(): void {
-    this.existingTasks.push({ description: "BLABLA asnm,d na,ასდაას დნ კ1 2 ", subtasks: [{ name: "hi", weight: 2 }], team: ["t1,t2"], title: " title1" });
-    this.existingTasks.push({ description: "BLasjkhdasj", subtasks: [{ name: "hi", weight: 2 }], team: ["t1,t2"], title: " title2" });
-    this.existingTasks.push({ description: "BLABLAasdasd", subtasks: [{ name: "hi", weight: 2 }], team: ["t1,t2"], title: " title3" });
-    this.existingTasks.push({ description: "BLABLA1231 asd as", subtasks: [{ name: "hi", weight: 2 }], team: ["t1,t2"], title: " title4" });
-    this.existingTasks.push({ description: "BLABLA asnm,d na,ასდაას დნ კ1 2 ", subtasks: [{ name: "hi", weight: 2 }], team: ["t1,t2"], title: " title1" });
-    this.existingTasks.push({ description: "BLasjkhdasj", subtasks: [{ name: "hi", weight: 2 }], team: ["t1,t2"], title: " title2" });
-    this.existingTasks.push({ description: "BLABLAasdasd", subtasks: [{ name: "hi", weight: 2 }], team: ["t1,t2"], title: " title3" });
-    this.existingTasks.push({ description: "BLABLA1231 asd as", subtasks: [{ name: "hi", weight: 2 }], team: ["t1,t2"], title: " title4" });
-    this.existingTasks.push({ description: "BLABLA asnm,d na,ასდაას დნ კ1 2 ", subtasks: [{ name: "hi", weight: 2 }], team: ["t1,t2"], title: " title1" });
-    this.existingTasks.push({ description: "BLasjkhdasj", subtasks: [{ name: "hi", weight: 2 }], team: ["t1,t2"], title: " title2" });
-    this.existingTasks.push({ description: "BLABLAasdasd", subtasks: [{ name: "hi", weight: 2 }], team: ["t1,t2"], title: " title3" });
-    this.existingTasks.push({ description: "BLABLA1231 asd as", subtasks: [{ name: "hi", weight: 2 }], team: ["t1,t2"], title: " title4" });
+    this.existingTasks.push({ description: "BLABLA asnm,d na,ასდაას დნ კ1 2 ", subtasks: [{ name: "hi", weight: 2 }], team: ["t1,t2"], title: "module 1" });
+    this.existingTasks.push({ description: "BLasjkhdasj", subtasks: [{ name: "hi", weight: 2 }], team: ["t1,t2"], title: "module 2" });
+    this.existingTasks.push({ description: "BLABLAasdasd", subtasks: [{ name: "hi", weight: 2 }], team: ["t1,t2"], title: "module 3" });
+    this.existingTasks.push({ description: "BLABLA1231 asd as", subtasks: [{ name: "hi", weight: 2 }], team: ["t1,t2"], title: "module 4" });
   }
 
   onTaskModelCreated(newModel: ITaskModel): void {
