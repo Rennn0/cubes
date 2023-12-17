@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ISubtask, ITaskModel } from '@lib/services/setup';
+import { SeedData } from '@lib/services/raw.data';
+import { IDeveloper, ISkill, ISubtask, ITaskModel } from '@lib/services/setup';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 
 @Component({
@@ -14,33 +15,52 @@ export class FormComponent implements OnInit {
   @Input() form!: FormGroup;
   @Input() subtasks!: ISubtask[];
 
-  items: any[] = [];
-  techStack: { name: string, weight: number }[] = [
-    { name: "C++", weight: 1 },
-    { name: ".Net", weight: 1 },
-    { name: "Node", weight: 1 },
-    { name: "Angular", weight: 1 },
-    { name: "React", weight: 1 },
-    { name: "SQL", weight: 1 },
-    { name: "Mongo", weight: 1 },
-    { name: "Django", weight: 1 },
-    { name: "Go", weight: 1 },
-    { name: "C", weight: 1 }
-  ]
+  private _data;
 
-  constructor() { }
+  subModules: string[] = [];
+  skills: ISkill[] = [];
+  developers: IDeveloper[] = [];
+  devNames: string[] = []
+  constructor() {
+    this._data = SeedData();
+    this.skills = this._data.Skills();
+  }
 
   filterList(event: AutoCompleteCompleteEvent) {
-    this.items = [...Array(10).keys()].map((item) => event.query + '-' + item);
+    this.subModules = this._data.SubModules()
+      .map(x => x.name)
+      .filter(x => x.toLowerCase().includes(event.query.toLocaleLowerCase()));
+    if (event.query != "")
+      this.subModules.push(event.query)
   }
+
+  FilterDevList(event: AutoCompleteCompleteEvent) {
+    // yovel jerze axali sia iqmndeba amito gansxvavebul devebs amoyris ar inerviulo 
+    this.developers = this._data.Developers()
+      .filter(dev =>
+        dev.skills.some(x => this.form.value.techStack?.some((y: ISkill) => x.name === y.name))
+        ||
+        dev.workedOn.some(x => this.form.value.selectedSubModules?.some((y: string) => x.name === y))
+      );
+
+    this.devNames = this.developers.map(x => x.name)
+
+    //vigac sxvisi saxeli
+    if (event.query !== "")
+      this.devNames.push(event.query);
+  }
+
   ngOnInit(): void {
     this.form.reset();
   }
 
   logForm(): void {
+    console.log(this.form.value)
     Object.entries(this.form.controls).forEach(x => {
       console.log(x[0], x[1].value)
     })
+    console.log(this.skills);
+    console.log(this.developers);
   }
 
   emitTaskModelCreated() {

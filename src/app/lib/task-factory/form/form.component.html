@@ -11,14 +11,25 @@
         
         <p-autoComplete 
             formControlName="selectedSubModules" 
-            [suggestions]="items" 
+            [suggestions]="subModules"  
+            [completeOnFocus]="true"
+            [dropdown]="true"
+            [dropdownIcon]="'pi pi-filter'"
             (completeMethod)="filterList($event)" 
             [multiple]="true"
             [style]="{marginBottom:'20px',width:'-webkit-fill-available'}"
             [styleClass]="'p-fluid'">
         </p-autoComplete>
-        
-        <p-chips 
+
+        <p-multiSelect 
+            formControlName="techStack" 
+            optionLabel="name"
+            [options]="skills"
+            [style]="{marginBottom:'20px',width:'-webkit-fill-available'}"
+            [placeholder]="'Tech Stack...'">
+        </p-multiSelect>
+
+        <!-- <p-chips 
             formControlName="team" 
             [separator]="','"
             [placeholder]="'Team members...'"
@@ -27,15 +38,19 @@
             <ng-template let-item pTemplate="item">
                 <i class="pi pi-user" style="margin-right: 5px;"></i> {{ item }} 
             </ng-template>
-        </p-chips>
+        </p-chips> -->
 
-        <p-multiSelect 
-            formControlName="techStack" 
-            optionLabel="name"
-            [options]="techStack"
+        <p-autoComplete 
+            formControlName="team" 
+            [suggestions]="devNames"  
+            [completeOnFocus]="true"
+            [dropdown]="true"
+            [dropdownIcon]="'pi pi-user-plus'"
+            (completeMethod)="FilterDevList($event)" 
+            [multiple]="true"
             [style]="{marginBottom:'20px',width:'-webkit-fill-available'}"
-            [placeholder]="'Tech Stack...'">
-        </p-multiSelect>
+            [styleClass]="'p-fluid'">
+        </p-autoComplete>
 
         <textarea 
             rows="5" 

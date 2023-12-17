@@ -9,7 +9,7 @@ import { ISubtask, ITaskModel, TaskModel } from "./setup";
 
     constructor() { }
 
-    public SeedData(): ISubtask[] {
+    public SeedData(): ISubtask[] { // wasashlelia male
         return Array.from({ length: 10 }, (v: string, k) => ({ name: `Submodule ${k}`, weight: k }))
     }
 
@@ -23,7 +23,7 @@ import { ISubtask, ITaskModel, TaskModel } from "./setup";
         this._dataToDrag = new TaskModel();
     }
 
-    public Drop(): TaskModel { // if ok call 2 else no call
+    public Drop(): ITaskModel { // if ok call 2 else no call
         return this._dataToDrag;
     }
 }
