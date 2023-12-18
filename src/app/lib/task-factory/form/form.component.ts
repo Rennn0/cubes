@@ -1,29 +1,32 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { SeedData } from '@lib/services/raw.data';
-import { IDeveloper, ISkill, ISubtask, ITaskModel } from '@lib/services/setup';
+import { FCTaskModel, IDeveloper, ISkill, ISubtask, ITaskModel } from '@lib/services/setup';
+import { MessageService } from 'primeng/api';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  styleUrls: ['./form.component.css'],
+  providers: [MessageService]
 })
 export class FormComponent implements OnInit {
   @Output() ENewTaskCreated = new EventEmitter<ITaskModel>();
 
-  @Input() form!: FormGroup;
-  @Input() subtasks!: ISubtask[];
+  @Input() form!: FormGroup<FCTaskModel>;
+  @Input() subtasks!: ISubtask[]; // ar gamoiyeneba
 
   private _data;
+  private _developers: IDeveloper[];
 
   subModules: string[] = [];
   skills: ISkill[] = [];
-  developers: IDeveloper[] = [];
-  devNames: string[] = []
-  constructor() {
+  suggestDevs: string[] = []
+  constructor(private _messageService: MessageService) {
     this._data = SeedData();
     this.skills = this._data.Skills();
+    this._developers = this._data.Developers();
   }
 
   filterList(event: AutoCompleteCompleteEvent) {
@@ -35,19 +38,19 @@ export class FormComponent implements OnInit {
   }
 
   FilterDevList(event: AutoCompleteCompleteEvent) {
-    // yovel jerze axali sia iqmndeba amito gansxvavebul devebs amoyris ar inerviulo 
-    this.developers = this._data.Developers()
+    // console.log(this._developers);
+    // console.log(this.suggestDevs);
+    this.suggestDevs = this._developers
       .filter(dev =>
         dev.skills.some(x => this.form.value.techStack?.some((y: ISkill) => x.name === y.name))
         ||
-        dev.workedOn.some(x => this.form.value.selectedSubModules?.some((y: string) => x.name === y))
-      );
-
-    this.devNames = this.developers.map(x => x.name)
+        dev.workedOn.some(x => this.form.value.subModules?.some((y: string) => x.name === y))
+      )
+      .map(x => x.name)
 
     //vigac sxvisi saxeli
     if (event.query !== "")
-      this.devNames.push(event.query);
+      this.suggestDevs.unshift(event.query);
   }
 
   ngOnInit(): void {
@@ -60,14 +63,27 @@ export class FormComponent implements OnInit {
       console.log(x[0], x[1].value)
     })
     console.log(this.skills);
-    console.log(this.developers);
+    console.log(this.suggestDevs);
   }
 
   emitTaskModelCreated() {
     if (this.form.valid) {
-      this.ENewTaskCreated.emit(this.form.value);
+      const form = this.form.value;
+
+      const newForm: ITaskModel = {
+        title: form.title,
+        description: form.description,
+        subModules: form.subModules?.map((value: string) => ({
+          name: value, K: 1 // es gasasworebeli iqneba mere 
+        })),
+        techStack: form.techStack,
+        developers: this._developers.filter(dev => form.developers.includes(dev.name))
+      }
+
+
+      this.ENewTaskCreated.emit(newForm);
     } else {
-      throw new Error("State of form is invalid");
+      this._messageService.add({ key: 'tl', severity: 'info', summary: 'Oops', detail: 'Fill required fields' })
     }
   }
 }

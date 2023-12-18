@@ -21,6 +21,7 @@ import { CardModule } from 'primeng/card';
 import { SkeletonModule } from 'primeng/skeleton';
 import { MessagesModule } from 'primeng/messages';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { ToastModule } from 'primeng/toast';
 
 //local components
 import { TaskFactoryComponent } from "./task-factory/task-factory.component";
@@ -50,6 +51,7 @@ import { MainService } from "./services/main.service";
     imports: [
         BrowserAnimationsModule,
         CommonModule,
+        ToastModule,
         MessagesModule,
         AutoCompleteModule,
         ReactiveFormsModule,

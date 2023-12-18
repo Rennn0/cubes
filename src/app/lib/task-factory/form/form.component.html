@@ -1,4 +1,5 @@
 <form [formGroup]="form">
+    <p-toast [position]="'top-left'" [key]="'tl'"></p-toast>
         <span class="p-float-label p-fluid" style="margin: 20px auto;">
             <input 
                 pInputText 
@@ -6,11 +7,11 @@
                 id="title" 
                 formControlName="title" 
                 />
-            <label for="title">Title</label>
+            <label for="title">* Title</label>
         </span>
         
         <p-autoComplete 
-            formControlName="selectedSubModules" 
+            formControlName="subModules" 
             [suggestions]="subModules"  
             [completeOnFocus]="true"
             [dropdown]="true"
@@ -41,8 +42,10 @@
         </p-chips> -->
 
         <p-autoComplete 
-            formControlName="team" 
-            [suggestions]="devNames"  
+            formControlName="developers" 
+            [suggestions]="suggestDevs" 
+            [showEmptyMessage]="true" 
+            [emptyMessage]="'No suggestions yet'"
             [completeOnFocus]="true"
             [dropdown]="true"
             [dropdownIcon]="'pi pi-user-plus'"
@@ -57,24 +60,25 @@
             cols="30" 
             pInputTextarea 
             formControlName="description"
-            [placeholder]="'Description...'"
+            [placeholder]="'* Description'"
             [style]="{marginBottom:'20px',width:'-webkit-fill-available'}">
             >
         </textarea>
 
         <p-button 
-            label="Add" 
-            [text]="true" 
+            label="Add Module" 
             [raised]="true" 
+            [severity]="'secondary'"
             (onClick)="emitTaskModelCreated()"
             [style]="{marginBottom:'20px',width:'-webkit-fill-available'}">
         </p-button>
         
         <p-button 
-            label="Add" 
-            [text]="true" 
+            label="logForm" 
             [raised]="true" 
+            [severity]="'info'"
             (onClick)="logForm()"
             [style]="{marginBottom:'20px',width:'-webkit-fill-available'}">
         </p-button>
+
 </form>

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MainService } from '@lib/services/main.service';
-import { ISubtask } from '@lib/services/setup';
+import { FCTaskModel, ISubtask, ITaskModel } from '@lib/services/setup';
 import { PrimeNGConfig } from 'primeng/api';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,7 +11,7 @@ import { PrimeNGConfig } from 'primeng/api';
 })
 export class AppComponent implements OnInit {
   //input data for TaskFactory
-  for_TF_Form!: FormGroup;
+  for_TF_Form!: FormGroup<FCTaskModel>;
   for_TF_Subtasks!: ISubtask[];
   //input data for Toolbox
   for_T_ProjectName: string = "random title"
@@ -29,14 +30,13 @@ export class AppComponent implements OnInit {
       menu: 1000,     // overlay menus
       tooltip: 1100   // tooltip
     };
-    this.for_TF_Form = new FormGroup({
+    this.for_TF_Form = new FormGroup<FCTaskModel>({
+      description: new FormControl('', [Validators.required]),
       title: new FormControl('', [Validators.required]),
-      team: new FormControl([]),
-      subtasks: new FormControl([]),
-      description: new FormControl(''),
-      selectedSubModules: new FormControl([]),
+      developers: new FormControl([]),
+      subModules: new FormControl([]),
       techStack: new FormControl([])
-    });
+    })
     this.for_TF_Subtasks = this._main.SeedData(); // mosashorebelia
   }
 

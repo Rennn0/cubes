@@ -2,16 +2,41 @@
 <div>
     <ng-container *ngFor="let model of taskModels">        
         <div>
-            <p-card [header]="model.title" subheader="here goes timestamp" [style]="{ width: '300px' }">
+            <p-card [header]="model.title" [style]="{ width: '300px' }">
                 <ng-template pTemplate="header">
-                    <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
+                    <img alt="Card" src="https://1.bp.blogspot.com/-EPI8-AqlL1E/XQITOuZjSCI/AAAAAAAACc0/bEtn-3uCMpkDovn0cAHBnfU_romlvc42ACLcBGAs/s1600/logo-01.jpg" />
                 </ng-template>
-                <p>
-                    {{model.description}}
-                            
-                </p>
+
+                <ng-template pTemplate="subtitle">
+                    <ng-container *ngFor="let subModule of model.subModules">
+                        |{{subModule.name}}|
+                    </ng-container>
+                </ng-template>
+
+                <ng-template pTemplate="content">
+                    <p> TechStack : 
+                        <ng-container *ngFor="let tech of model.techStack">
+                            {{tech.name}} ({{tech.K}})
+                        </ng-container>
+                    </p>
+
+                    <p>Developers :
+                        <ng-container *ngFor="let developer of model.developers">
+                            {{developer.name}} 
+                            (
+                                <ng-container *ngFor="let skill of developer.skills">
+                                    {{skill.name}};
+                                </ng-container>
+                                <ng-container *ngFor="let work of developer.workedOn">
+                                    {{work.name}};
+                                </ng-container>
+                            )
+                        </ng-container>
+                    </p>
+                </ng-template>
+
                 <ng-template pTemplate="footer">
-                    <p-button label="Save" icon="pi pi-check"></p-button>
+                    <p-button label="Select" icon="pi pi-check"></p-button>
                     <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (onClick)="RemoveFromModels(model)"></p-button>
                 </ng-template>
             </p-card>

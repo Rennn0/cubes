@@ -10,7 +10,7 @@ import { ISubtask, ITaskModel } from '@lib/services/setup';
 })
 export class TaskFactoryComponent implements OnInit {
   @Input() form!: FormGroup;
-  @Input() subtasks!: ISubtask[];
+  @Input() subtasks!: ISubtask[]; // ar gamoiyeneba
 
   newTaskSwitch: boolean = true;
 
@@ -18,15 +18,27 @@ export class TaskFactoryComponent implements OnInit {
 
   constructor(private _main: MainService) { }
   ngOnInit(): void {
-    this.existingTasks.push({ description: "BLABLA asnm,d na,ასდაას დნ კ1 2 ", subtasks: [{ name: "hi", weight: 2 }], team: ["t1,t2"], title: "module 1" });
-    this.existingTasks.push({ description: "BLasjkhdasj", subtasks: [{ name: "hi", weight: 2 }], team: ["t1,t2"], title: "module 2" });
-    this.existingTasks.push({ description: "BLABLAasdasd", subtasks: [{ name: "hi", weight: 2 }], team: ["t1,t2"], title: "module 3" });
-    this.existingTasks.push({ description: "BLABLA1231 asd as", subtasks: [{ name: "hi", weight: 2 }], team: ["t1,t2"], title: "module 4" });
+    this.existingTasks.push({
+      description: "initial",
+      developers: [
+        {
+          name: "Luka",
+          skills: [
+            { name: "C++", K: 9.99 }
+          ],
+          workedOn: [{ name: "some stuff", importance: 1 }]
+        }
+      ],
+      subModules: [{ name: "random module", importance: 1 }],
+      techStack: [{ name: "c++", K: 9.99 }, { name: "Angular", K: 8.88 }],
+      title: "random title"
+    })
   }
 
   onTaskModelCreated(newModel: ITaskModel): void {
     this.newTaskSwitch = true;
     this.existingTasks.push(newModel);
+    console.log(this.existingTasks)
   }
 
   dragStart(model: ITaskModel): void {

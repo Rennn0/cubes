@@ -14,6 +14,7 @@ export class TaskViewComponent {
 
   Dropped() {
     this.taskModels.push(this._main.Drop());
+    // console.log(this.taskModels)
   }
 
   RemoveFromModels(model: ITaskModel) {

@@ -16,10 +16,10 @@ export function SeedData() {
 
     return {
         Skills: (): ISkill[] => {
-            return skills.map(skill => ({ name: skill, K: Math.random() * 3 }))
+            return skills.map(skill => ({ name: skill, K: parseFloat((Math.random() * 10).toFixed(2)) }))
         },
         SubModules: (): ISubModule[] => {
-            return subModules.map(sm => ({ name: sm, importance: Math.random() * 10 }))
+            return subModules.map(sm => ({ name: sm, importance: parseFloat((Math.random() * 3).toFixed(4)) }))
         },
         Developers: (): IDeveloper[] => {
             return Array.from({ length: 10 }, (v, k) =>

@@ -1,12 +1,23 @@
+import { FormControl } from "@angular/forms"
+
 export interface ISubtask {
     name: string,
     weight: number
 }
+
 export interface ITaskModel {
     title: string,
-    team: string[],
-    subtasks?: ISubtask[],
-    description: string
+    description: string,
+    subModules: ISubModule[],
+    techStack: ISkill[],
+    developers: IDeveloper[],
+}
+export interface FCTaskModel {
+    title: FormControl,
+    description: FormControl,
+    subModules: FormControl,
+    developers: FormControl,
+    techStack: FormControl,
 }
 
 export interface ISkill {
@@ -27,13 +38,15 @@ export interface IDeveloper {
 
 export class TaskModel implements ITaskModel {
     title: string
-    team: string[]
-    subtasks: ISubtask[]
     description: string
+    subModules: ISubModule[]
+    developers: IDeveloper[]
+    techStack: ISkill[]
     constructor() {
         this.title = "";
-        this.team = [];
-        this.subtasks = [];
-        this.description = ""
+        this.description = "";
+        this.subModules = [];
+        this.developers = [];
+        this.techStack = [];
     }
 }
