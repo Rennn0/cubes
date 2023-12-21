@@ -29,6 +29,10 @@ export class ToolboxComponent {
   }
 
   openDialog() {
-    this.ref = this._dialog.open(DialogComponent, {});
+    this.ref = this._dialog.open(DialogComponent, {
+      header: "Relation Mapper",
+      footer: new Date(Date.now()).toDateString(),
+      styleClass: "main-container",
+    });
   }
 }

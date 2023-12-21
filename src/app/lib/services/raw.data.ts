@@ -22,7 +22,7 @@ export function SeedData() {
             return subModules.map(sm => ({ name: sm, importance: parseFloat((Math.random() * 3).toFixed(4)) }))
         },
         Developers: (): IDeveloper[] => {
-            return Array.from({ length: 10 }, (v, k) =>
+            return Array.from<unknown, IDeveloper>({ length: 10 }, (v, k) =>
             ({
                 workedOn: [
                     { name: subModules[Math.floor(Math.random() * subModules.length)] },

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MainService } from '@lib/services/main.service';
 import { ITaskModel } from '@lib/services/setup';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-task-view',
@@ -8,15 +9,17 @@ import { ITaskModel } from '@lib/services/setup';
   styleUrls: ['./task-view.component.css']
 })
 export class TaskViewComponent {
-  taskModels: ITaskModel[] = [];
-  constructor(private _main: MainService) { }
+  taskModels: Observable<ITaskModel[]>;
 
-  Dropped() {
-    this.taskModels.push(this._main.Drop());
-    // console.log(this.taskModels)
+  constructor(private _main: MainService) {
+    this.taskModels = this._main.$dragedData;
   }
 
-  RemoveFromModels(model: ITaskModel) {
-    this.taskModels = this.taskModels.filter(x => x !== model)
+  Dropped() {
+    this._main.Drop();
+  }
+
+  RemoveFromModels(title: string) {
+    this._main.RemoveFromModels(title);
   }
 }

@@ -3,3 +3,11 @@ i{
     margin: 5px 15px;
     transform: translateY(3px);
 }
+
+.gap-maker {
+    margin: 0 10px 0 0;
+}
+
+.gap-maker *  {
+    margin: inherit;
+}

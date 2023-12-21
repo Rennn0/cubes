@@ -54,7 +54,7 @@ export class TaskFactoryComponent implements OnInit {
   onTaskModelCreated(newModel: ITaskModel): void {
     this.newTaskSwitch = true;
     this.existingTasks.push(newModel);
-    console.log(this.existingTasks)
+    // console.log(this.existingTasks)
   }
 
   dragStart(model: ITaskModel): void {

@@ -1,16 +1,13 @@
-<ng-container *ngIf="!loading; else skeleton">
+<ng-container *ngIf="loading; else skeleton">
   <app-loading
   (closeLoading)="onCloseLoading($event)"></app-loading>
 </ng-container>
 
 <ng-template #skeleton>
-  <ng-container *ngIf="!displaySkeleton; else content">
+  <ng-container *ngIf="displaySkeleton; else content">
     <div class="skeleton-container">
       <div class="skeleton-left">
         <p-skeleton height="90%" width="90%"  [style]="{margin: '15px 0 0 15px'}"></p-skeleton>
-        <!-- <ng-container *ngFor="let task of for_TF_Subtasks">
-          <p-skeleton height="5%" width="50%" [style]="{margin: '15px auto'}"></p-skeleton>
-        </ng-container> -->
       </div>
       <div class="skeleton-right">
         <div class="skeleton-up">
@@ -24,7 +21,7 @@
   </ng-container>
 
   <ng-template #content>
-    <p-splitter [style]="{ height: '98vh' }" [panelSizes]="[25, 75]" [minSizes]="[25, 60]">
+    <p-splitter [style]="{ height: '98vh' }" [panelSizes]="[20, 80]" [minSizes]="[20, 50]">
       <ng-template pTemplate>
           <div  style="flex-grow: 1;" >
             <app-task-factory
@@ -35,7 +32,7 @@
           </div>
       </ng-template>
       <ng-template pTemplate>
-          <p-splitter layout="vertical" [panelSizes]="[10, 90]" [minSizes]="[10,90]">
+          <p-splitter layout="vertical" [panelSizes]="[10, 90]" [minSizes]="[10,90]" >
               <ng-template pTemplate >
                   <div style="flex-grow: 1;" >
                     <app-toolbox

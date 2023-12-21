@@ -1,8 +1,7 @@
 <h1 pDroppable (onDrop)="Dropped()">Drop ZONE</h1>
-<div>
-    <ng-container *ngFor="let model of taskModels">        
-        <div>
-            <p-card [header]="model.title" [style]="{ width: '300px' }">
+<div style="flex-wrap: wrap;">
+    <ng-container *ngFor="let model of taskModels | async">        
+            <p-card [header]="model.title" [style]="{ width: '350px',margin: '0 10px' }">
                 <ng-template pTemplate="header">
                     <img alt="Card" src="https://1.bp.blogspot.com/-EPI8-AqlL1E/XQITOuZjSCI/AAAAAAAACc0/bEtn-3uCMpkDovn0cAHBnfU_romlvc42ACLcBGAs/s1600/logo-01.jpg" />
                 </ng-template>
@@ -33,13 +32,16 @@
                             )
                         </ng-container>
                     </p>
+                    <p>
+                        Description :
+                        {{model.description}}
+                    </p>
                 </ng-template>
 
                 <ng-template pTemplate="footer">
                     <p-button label="Select" icon="pi pi-check"></p-button>
-                    <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (onClick)="RemoveFromModels(model)"></p-button>
+                    <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (onClick)="RemoveFromModels(model.title)"></p-button>
                 </ng-template>
             </p-card>
-        </div>
     </ng-container>
 </div>

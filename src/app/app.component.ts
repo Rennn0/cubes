@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
       subModules: new FormControl([]),
       techStack: new FormControl([])
     })
-    this.for_TF_Subtasks = this._main.SeedData(); // mosashorebelia
+    this.for_TF_Subtasks = this._main.SeedData(); // ar gamoiyeneba
   }
 
   onCloseLoading(name: string) {

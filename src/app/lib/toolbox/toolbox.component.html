@@ -1,15 +1,15 @@
 <p-toolbar>
     <div>
-        <p-splitButton label="Save" icon="pi pi-check" [model]="items"></p-splitButton>
+        <p-splitButton  label="Save" icon="pi pi-check" [model]="items"></p-splitButton>
     </div>
     <div class="p-toolbar-group-center" style="font-size: xxx-large;">
         <i class="pi pi-box" ></i>
         <span>{{projectName}}</span>
     </div>
     
-    <div>
-        <button pButton icon="pi pi-plus" (click)="openDialog()"></button>
-        <button pButton icon="pi pi-print" ></button>
-        <button pButton icon="pi pi-upload"></button>
+    <div class="gap-maker">
+        <p-button [rounded]="true" severity="secondary" [outlined]="true" icon="pi pi-paperclip" (click)="openDialog()"></p-button>
+        <p-button [rounded]="true" severity="secondary" [outlined]="true" icon="pi pi-print" ></p-button>
+        <p-button [rounded]="true" severity="secondary" [outlined]="true" icon="pi pi-upload"></p-button>
     </div>
 </p-toolbar>

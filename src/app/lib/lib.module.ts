@@ -23,7 +23,7 @@ import { MessagesModule } from 'primeng/messages';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ToastModule } from 'primeng/toast';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
-
+import { RippleModule } from 'primeng/ripple';
 //local components
 import { TaskFactoryComponent } from "./task-factory/task-factory.component";
 import { ToolboxComponent } from './toolbox/toolbox.component';
@@ -53,6 +53,7 @@ import { DialogComponent } from './dialog/dialog.component';
     ],
     imports: [
         DynamicDialogModule,
+        RippleModule,
         BrowserAnimationsModule,
         CommonModule,
         ToastModule,
