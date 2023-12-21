@@ -22,6 +22,7 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { MessagesModule } from 'primeng/messages';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ToastModule } from 'primeng/toast';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
 
 //local components
 import { TaskFactoryComponent } from "./task-factory/task-factory.component";
@@ -31,6 +32,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { FormComponent } from './task-factory/form/form.component';
 import { LoadingComponent } from './loading/loading.component';
 import { MainService } from "./services/main.service";
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
     declarations: [
@@ -39,7 +41,8 @@ import { MainService } from "./services/main.service";
         TaskViewComponent,
         NavigationBarComponent,
         FormComponent,
-        LoadingComponent
+        LoadingComponent,
+        DialogComponent
     ],
     exports: [
         TaskFactoryComponent,
@@ -49,6 +52,7 @@ import { MainService } from "./services/main.service";
         LoadingComponent
     ],
     imports: [
+        DynamicDialogModule,
         BrowserAnimationsModule,
         CommonModule,
         ToastModule,

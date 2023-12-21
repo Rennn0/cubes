@@ -9,7 +9,6 @@ import { ITaskModel } from '@lib/services/setup';
 })
 export class TaskViewComponent {
   taskModels: ITaskModel[] = [];
-
   constructor(private _main: MainService) { }
 
   Dropped() {
