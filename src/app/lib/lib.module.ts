@@ -33,6 +33,7 @@ import { FormComponent } from './task-factory/form/form.component';
 import { LoadingComponent } from './loading/loading.component';
 import { MainService } from "./services/main.service";
 import { DialogComponent } from './dialog/dialog.component';
+import { TextPreloadComponent } from './loading/text-preload/text-preload.component';
 
 @NgModule({
     declarations: [
@@ -42,7 +43,8 @@ import { DialogComponent } from './dialog/dialog.component';
         NavigationBarComponent,
         FormComponent,
         LoadingComponent,
-        DialogComponent
+        DialogComponent,
+        TextPreloadComponent
     ],
     exports: [
         TaskFactoryComponent,

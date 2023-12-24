@@ -1,11 +1,22 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MainService } from '@lib/services/main.service';
 import { Message } from 'primeng/api';
 
 @Component({
   selector: 'app-loading',
   templateUrl: './loading.component.html',
-  styleUrls: ['./loading.component.css']
+  styleUrls: ['./loading.component.css'],
+  animations: [
+    trigger('fadeOut', [
+      state('void', style({ opacity: 1 })),
+      state('*', style({ opacity: 1 })),
+      transition(':leave', [
+        animate('1000ms', style({ opacity: 0 })),
+      ]),
+    ]),
+  ],
 })
 export class LoadingComponent implements AfterViewInit {
   @ViewChild("myCanvas", { static: false }) myCanvas!: ElementRef<HTMLCanvasElement>;
@@ -21,11 +32,13 @@ export class LoadingComponent implements AfterViewInit {
   ];
   private balls: any[] = [];
 
+  title = "random title"
   messages: Message[] = [];
   showIcon: boolean = false;
   projectName = new FormControl("", [Validators.required, Validators.minLength(3)]);
+  projectNameIsOk: boolean = false;
 
-  constructor() { }
+  constructor(private _main: MainService) { }
 
   ngAfterViewInit(): void {
     const canvas = this.myCanvas.nativeElement;
@@ -35,7 +48,6 @@ export class LoadingComponent implements AfterViewInit {
       this.draw();
     }
   }
-
   createBalls(): void {
     for (let i = 0; i < 3; i++) {
       const radius = 10;
@@ -124,11 +136,14 @@ export class LoadingComponent implements AfterViewInit {
   }
 
   onEnterKeyPress() {
+    this._main.storeFuckingTtitleFOrPreload = this.projectName.value!;
     if (this.projectName.valid && this.projectName.value) {
       this.showIcon = true;
       setTimeout(() => {
         this.showIcon = false;
-        this.closeLoading.emit(this.projectName.value!);
+        // this.closeLoading.emit(this.projectName.value!);
+        this.projectNameIsOk = true;
+
       }, 2000);
     } else if (this.messages.length == 0) {
       this.messages = [{ severity: 'warn', summary: 'Oops', detail: 'At least 3 letters' }];
@@ -136,5 +151,9 @@ export class LoadingComponent implements AfterViewInit {
         this.messages = []
       }, 3000);
     }
+  }
+
+  onClosePreload() {
+    this.closeLoading.emit(this.projectName.value!);
   }
 }

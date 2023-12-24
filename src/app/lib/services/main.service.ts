@@ -12,6 +12,8 @@ import { BehaviorSubject, Observable } from "rxjs";
     public $dragedData: Observable<ITaskModel[]> = this._dragedDataSubject.asObservable();
     ///////
 
+    storeFuckingTtitleFOrPreload: string = ""
+
     constructor() { }
 
     public SeedData(): ISubtask[] { // ar gamoiyeneba
