@@ -1,47 +1,12 @@
-<h1 pDroppable (onDrop)="Dropped()">Drop ZONE</h1>
-<div style="flex-wrap: wrap;">
+<div >
     <ng-container *ngFor="let model of taskModels | async">        
-            <p-card [header]="model.title" [style]="{ width: '350px',margin: '0 10px' }">
-                <ng-template pTemplate="header">
-                    <img alt="Card" src="https://1.bp.blogspot.com/-EPI8-AqlL1E/XQITOuZjSCI/AAAAAAAACc0/bEtn-3uCMpkDovn0cAHBnfU_romlvc42ACLcBGAs/s1600/logo-01.jpg" />
-                </ng-template>
-
-                <ng-template pTemplate="subtitle">
-                    <ng-container *ngFor="let subModule of model.subModules">
-                        |{{subModule.name}}|
-                    </ng-container>
-                </ng-template>
-
+        <div class="task-card">
+            <p-overlayPanel #op>
                 <ng-template pTemplate="content">
-                    <p> TechStack : 
-                        <ng-container *ngFor="let tech of model.techStack">
-                            {{tech.name}} ({{tech.K}})
-                        </ng-container>
-                    </p>
-
-                    <p>Developers :
-                        <ng-container *ngFor="let developer of model.developers">
-                            {{developer.name}} 
-                            (
-                                <ng-container *ngFor="let skill of developer.skills">
-                                    {{skill.name}};
-                                </ng-container>
-                                <ng-container *ngFor="let work of developer.workedOn">
-                                    {{work.name}};
-                                </ng-container>
-                            )
-                        </ng-container>
-                    </p>
-                    <p>
-                        Description :
-                        {{model.description}}
-                    </p>
+                    <h1>{{model.description}}</h1>
                 </ng-template>
-
-                <ng-template pTemplate="footer">
-                    <p-button label="Select" icon="pi pi-check"></p-button>
-                    <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (onClick)="RemoveFromModels(model.title)"></p-button>
-                </ng-template>
-            </p-card>
+            </p-overlayPanel>
+            <p-button (click)="op.toggle($event)" icon="pi pi-image" label="Show"></p-button>
+        </div>
     </ng-container>
 </div>

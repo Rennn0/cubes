@@ -80,7 +80,6 @@ export class FormComponent implements OnInit {
         developers: this._developers.filter(dev => form.developers.includes(dev.name))
       }
 
-
       this.ENewTaskCreated.emit(newForm);
     } else {
       this._messageService.add({ key: 'tl', severity: 'info', summary: 'Oops', detail: 'Fill required fields' })

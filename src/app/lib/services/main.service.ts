@@ -11,8 +11,8 @@ import { BehaviorSubject, Observable } from "rxjs";
     private _dragedDataSubject: BehaviorSubject<ITaskModel[]> = new BehaviorSubject<ITaskModel[]>([]);
     public $dragedData: Observable<ITaskModel[]> = this._dragedDataSubject.asObservable();
     ///////
-
-    storeFuckingTtitleFOrPreload: string = ""
+    storeFuckingTtitleFOrPreload: string = "" // ki vici sashinelebaa mara mushaobs
+    ///////
 
     constructor() { }
 
@@ -42,5 +42,10 @@ import { BehaviorSubject, Observable } from "rxjs";
 
     public RemoveFromModels(title: string) {
         this._dragedDataSubject.next(this._dragedDataSubject.value.filter(existing => existing.title !== title))
+    }
+
+    // drag_drop agaraa magarm igive funqcionals asrulebs amito axali observable ardavamate
+    public AddModel(model: ITaskModel) {
+        this._dragedDataSubject.next(this._dragedDataSubject.value.concat(model))
     }
 }

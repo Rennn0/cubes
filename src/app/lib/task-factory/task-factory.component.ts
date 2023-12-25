@@ -14,11 +14,11 @@ export class TaskFactoryComponent implements OnInit {
 
   newTaskSwitch: boolean = true;
 
-  existingTasks: ITaskModel[] = [];
+  // existingTasks: ITaskModel[] = []; 
 
   constructor(private _main: MainService) { }
   ngOnInit(): void {
-    this.existingTasks.push(
+    this._main.AddModel(
       {
         description: "initial",
         developers: [
@@ -33,7 +33,8 @@ export class TaskFactoryComponent implements OnInit {
         subModules: [{ name: "random module", importance: 1 }],
         techStack: [{ name: "c++", K: 9.99 }, { name: "Angular", K: 8.88 }],
         title: "random title"
-      },
+      });
+    this._main.AddModel(
       {
         description: "initial @",
         developers: [
@@ -53,8 +54,11 @@ export class TaskFactoryComponent implements OnInit {
 
   onTaskModelCreated(newModel: ITaskModel): void {
     this.newTaskSwitch = true;
-    this.existingTasks.push(newModel);
+
+    // this.existingTasks.push(newModel);
     // console.log(this.existingTasks)
+
+    this._main.AddModel(newModel);
   }
 
   dragStart(model: ITaskModel): void {

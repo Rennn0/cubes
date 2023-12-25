@@ -13,6 +13,7 @@
         <p-autoComplete 
             formControlName="subModules" 
             [suggestions]="subModules"  
+            [placeholder]="form.controls.subModules.value?.length ?'':'Submodules'"
             [completeOnFocus]="true"
             [dropdown]="true"
             [dropdownIcon]="'pi pi-filter'"
@@ -27,7 +28,7 @@
             optionLabel="name"
             [options]="skills"
             [style]="{marginBottom:'20px',width:'-webkit-fill-available'}"
-            [placeholder]="'Tech Stack...'">
+            [placeholder]="'Tech stack'">
         </p-multiSelect>
 
         <!-- <p-chips 
@@ -44,6 +45,7 @@
         <p-autoComplete 
             formControlName="developers" 
             [suggestions]="suggestDevs" 
+            [placeholder]="form.controls.developers.value?.length ? '':'Dev team' "
             [showEmptyMessage]="true" 
             [emptyMessage]="'No suggestions yet'"
             [completeOnFocus]="true"

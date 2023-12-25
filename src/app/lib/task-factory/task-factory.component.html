@@ -1,37 +1,37 @@
-<p-toggleButton 
-    [(ngModel)]="newTaskSwitch" 
-    [onLabel]="'New Module'" 
-    [offLabel]="'Delete'" 
-    [onIcon]="'pi pi-plus'" 
-    [offIcon]="'pi pi-trash'"
->
-</p-toggleButton>
+<div style="margin-top: 10px;">
+    <p-toggleButton 
+        [(ngModel)]="newTaskSwitch" 
+        [onLabel]="'New Module'" 
+        [offLabel]="'Delete'" 
+        [onIcon]="'pi pi-plus'" 
+        [offIcon]="'pi pi-trash'"
+    >
+    </p-toggleButton>
 
-<ng-container *ngIf="!newTaskSwitch; else existingTasksList">
-    <div>
-        <app-form
-        [form]="form"
-        [subtasks]="subtasks"
-        (ENewTaskCreated)="onTaskModelCreated($event)">
-        </app-form>
-    </div>
-</ng-container>
+    <ng-container *ngIf="!newTaskSwitch; else existingTasksList">
+            <app-form
+            [form]="form"
+            [subtasks]="subtasks"
+            (ENewTaskCreated)="onTaskModelCreated($event)">
+            </app-form>
+    </ng-container>
 
-<ng-template #existingTasksList>
-    <p-scrollPanel>
-        <p-accordion>
-            <ng-container *ngFor="let model of existingTasks">
-                <p-accordionTab 
-                    [header]=model.title 
-                    pDraggable 
-                    [dragEffect]="'move'" 
-                    (onDragStart)="dragStart(model)" 
-                    (onDragEnd)="dragEnd()">
-                    <p>
-                        {{model.description}}
-                    </p>
-                </p-accordionTab>
-            </ng-container>   
-        </p-accordion>
-    </p-scrollPanel> 
-</ng-template>
+    <ng-template #existingTasksList>
+        <p-scrollPanel>
+            <p-accordion>
+                <!-- <ng-container *ngFor="let model of existingTasks">
+                    <p-accordionTab 
+                        [header]=model.title 
+                        pDraggable 
+                        [dragEffect]="'move'" 
+                        (onDragStart)="dragStart(model)" 
+                        (onDragEnd)="dragEnd()">
+                        <p>
+                            {{model.description}}
+                        </p>
+                    </p-accordionTab>
+                </ng-container>    -->
+            </p-accordion>
+        </p-scrollPanel> 
+    </ng-template>
+</div>

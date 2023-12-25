@@ -22,8 +22,7 @@ export class TextPreloadComponent {
   elts: any = {};
   texts: string[] = [
     "Getting", "Ready", "For",
-    this._main.storeFuckingTtitleFOrPreload,
-    ". . ."
+    this._main.storeFuckingTtitleFOrPreload
   ];
 
   frame: any;

@@ -15,9 +15,9 @@ export class TaskViewComponent {
     this.taskModels = this._main.$dragedData;
   }
 
-  Dropped() {
-    this._main.Drop();
-  }
+  // Dropped() {
+  //   this._main.Drop();
+  // }
 
   RemoveFromModels(title: string) {
     this._main.RemoveFromModels(title);

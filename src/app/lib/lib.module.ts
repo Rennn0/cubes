@@ -24,7 +24,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ToastModule } from 'primeng/toast';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { RippleModule } from 'primeng/ripple';
-
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 //local components
 import { TaskFactoryComponent } from "./task-factory/task-factory.component";
 import { ToolboxComponent } from './toolbox/toolbox.component';
@@ -58,6 +58,7 @@ import { AnimatedCubeComponent } from './loading/animated-cube/animated-cube.com
         AnimatedCubeComponent
     ],
     imports: [
+        OverlayPanelModule,
         DynamicDialogModule,
         RippleModule,
         BrowserAnimationsModule,
