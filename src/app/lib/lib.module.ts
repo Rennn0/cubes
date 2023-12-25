@@ -24,6 +24,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ToastModule } from 'primeng/toast';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { RippleModule } from 'primeng/ripple';
+
 //local components
 import { TaskFactoryComponent } from "./task-factory/task-factory.component";
 import { ToolboxComponent } from './toolbox/toolbox.component';
@@ -34,6 +35,7 @@ import { LoadingComponent } from './loading/loading.component';
 import { MainService } from "./services/main.service";
 import { DialogComponent } from './dialog/dialog.component';
 import { TextPreloadComponent } from './loading/text-preload/text-preload.component';
+import { AnimatedCubeComponent } from './loading/animated-cube/animated-cube.component';
 
 @NgModule({
     declarations: [
@@ -44,14 +46,16 @@ import { TextPreloadComponent } from './loading/text-preload/text-preload.compon
         FormComponent,
         LoadingComponent,
         DialogComponent,
-        TextPreloadComponent
+        TextPreloadComponent,
+        AnimatedCubeComponent
     ],
     exports: [
         TaskFactoryComponent,
         ToolboxComponent,
         TaskViewComponent,
         NavigationBarComponent,
-        LoadingComponent
+        LoadingComponent,
+        AnimatedCubeComponent
     ],
     imports: [
         DynamicDialogModule,

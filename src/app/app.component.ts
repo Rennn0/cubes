@@ -20,6 +20,8 @@ export class AppComponent implements OnInit {
   loading: boolean = true;
   displaySkeleton: boolean = true;
 
+  sidebarVisible = false;
+
   constructor(private primeConfig: PrimeNGConfig, private _main: MainService) { }
 
   ngOnInit() {
@@ -45,6 +47,6 @@ export class AppComponent implements OnInit {
     this.for_T_ProjectName = name;
     setTimeout(() => {
       this.displaySkeleton = false;
-    }, 1777);
+    }, 11111);
   }
 }

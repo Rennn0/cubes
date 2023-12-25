@@ -5,7 +5,7 @@
 
 <ng-template #skeleton>
   <ng-container *ngIf="displaySkeleton; else content">
-    <div class="skeleton-container">
+    <!-- <div class="skeleton-container">
       <div class="skeleton-left">
         <p-skeleton height="90%" width="90%"  [style]="{margin: '15px 0 0 15px'}"></p-skeleton>
       </div>
@@ -17,40 +17,34 @@
           <p-skeleton height="86%" width="95%" [style]="{margin: '15px 0 0 25px'}"></p-skeleton>
         </div>
       </div>
-    </div>
+    </div> -->
+    <app-animated-cube></app-animated-cube>
+
   </ng-container>
 
   <ng-template #content>
-    <p-splitter [style]="{ height: '98vh' }" [panelSizes]="[20, 80]" [minSizes]="[20, 50]">
-      <ng-template pTemplate>
-          <div  style="flex-grow: 1;" >
-            <app-task-factory
-              [subtasks]="for_TF_Subtasks"
-              [form]="for_TF_Form"
-            >
-            </app-task-factory>
-          </div>
-      </ng-template>
-      <ng-template pTemplate>
-          <p-splitter layout="vertical" [panelSizes]="[10, 90]" [minSizes]="[10,90]" >
-              <ng-template pTemplate >
-                  <div style="flex-grow: 1;" >
-                    <app-toolbox
-                    [projectName]="for_T_ProjectName">
-                      
-                    </app-toolbox>
-                  </div>
-              </ng-template>
-              <ng-template pTemplate> 
-                  <div style="flex-grow: 1;" >
-                    <app-task-view>
-                      
-                    </app-task-view>
-                  </div>
-              </ng-template>
-          </p-splitter>
-      </ng-template>
-    </p-splitter>
+    <div class="header">
+      <div class="sidebar">
+        <p-sidebar [(visible)]="sidebarVisible">
+          <app-task-factory
+          [subtasks]="for_TF_Subtasks"
+          [form]="for_TF_Form"
+          >
+          </app-task-factory>
+        </p-sidebar>
+        <p-button (click)="sidebarVisible = true" icon="pi pi-arrow-right"></p-button>
+      </div>
+      <div class="toolbox">
+        <app-toolbox
+          [projectName]="for_T_ProjectName">      
+        </app-toolbox>
+      </div>
+    </div>
+
+    <div class="body">
+      <app-task-view>
+        
+      </app-task-view>
+    </div>
   </ng-template>
-</ng-template>
 

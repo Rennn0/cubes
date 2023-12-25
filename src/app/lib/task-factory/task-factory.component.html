@@ -4,12 +4,11 @@
     [offLabel]="'Delete'" 
     [onIcon]="'pi pi-plus'" 
     [offIcon]="'pi pi-trash'"
-    [style]="{margin:'27px 20px 5px 21px'}"
 >
 </p-toggleButton>
 
 <ng-container *ngIf="!newTaskSwitch; else existingTasksList">
-    <div style="padding: 25px;">
+    <div>
         <app-form
         [form]="form"
         [subtasks]="subtasks"
@@ -19,7 +18,7 @@
 </ng-container>
 
 <ng-template #existingTasksList>
-    <p-scrollPanel [style]="{ width: '--webkit-fill-available', height: '85vh', margin:'30px 20px' }">
+    <p-scrollPanel>
         <p-accordion>
             <ng-container *ngFor="let model of existingTasks">
                 <p-accordionTab 

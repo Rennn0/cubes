@@ -28,8 +28,8 @@ export class TextPreloadComponent {
 
   frame: any;
 
-  morphTime: number = 1.5;
-  cooldownTime: number = 0.35;
+  morphTime: number = 1;
+  cooldownTime: number = 0.15;
 
   textIndex: number = this.texts.length - 1;
   time: any = new Date();
