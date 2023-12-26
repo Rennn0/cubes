@@ -1,0 +1,11 @@
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 36px; 
+  }
+  
+  .task-card {
+    /* padding: 16px; */
+    margin: 60px 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }

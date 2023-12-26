@@ -1,0 +1,28 @@
+/* task-model-card.component.css */
+.task-model-card {
+    width: 400px;
+    height: auto;
+    border-radius: 5px;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .submodule {
+    margin-bottom: 8px;
+  }
+  
+  .tech-stack,
+  .developers {
+    margin-top: 16px;
+  }
+  
+  .skills,
+  .worked-on {
+    display: block;
+    margin-top: 4px;
+  }
+  
+  .matching{
+    color: green;
+    font-weight: bold;
+  }

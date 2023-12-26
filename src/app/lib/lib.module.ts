@@ -36,6 +36,7 @@ import { MainService } from "./services/main.service";
 import { DialogComponent } from './dialog/dialog.component';
 import { TextPreloadComponent } from './loading/text-preload/text-preload.component';
 import { AnimatedCubeComponent } from './loading/animated-cube/animated-cube.component';
+import { DetailedVIewComponent } from './task-view/detailed-view/detailed-view.component';
 
 @NgModule({
     declarations: [
@@ -47,7 +48,8 @@ import { AnimatedCubeComponent } from './loading/animated-cube/animated-cube.com
         LoadingComponent,
         DialogComponent,
         TextPreloadComponent,
-        AnimatedCubeComponent
+        AnimatedCubeComponent,
+        DetailedVIewComponent
     ],
     exports: [
         TaskFactoryComponent,

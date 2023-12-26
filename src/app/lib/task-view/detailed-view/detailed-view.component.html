@@ -1,0 +1,28 @@
+<!-- task-model-card.component.html -->
+<div class="task-model-card">
+    <h1>{{modelData.title}}</h1>
+    <div *ngFor="let submodule of modelData.subModules" class="submodule" [ngClass]="{'matching':submodule?.matching}">
+      | {{submodule.name}} ({{submodule.importance}}) |
+    </div>
+    <div class="tech-stack">
+      <h3>Tech Stack:</h3>
+      <ul>
+        <li *ngFor="let skill of modelData.techStack" [ngClass]="{'matching': skill?.matching}">{{skill.name}} (K: {{skill.K}})</li>
+      </ul>
+    </div>
+    <div class="developers">
+      <h3>Developers:</h3>
+      <ul>
+        <li *ngFor="let developer of modelData.developers">
+          <strong>{{developer.name}}</strong>
+          <div class="skills">
+            <span *ngFor="let skill of developer.skills" [ngClass]="{'matching': skill?.matching}">{{skill.name}} (K: {{skill.K}})</span>
+          </div>
+          <div class="worked-on">
+            <span *ngFor="let submodule of developer.workedOn" [ngClass]="{'matching':submodule?.matching}">{{submodule.name}}</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  

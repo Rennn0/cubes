@@ -23,11 +23,13 @@ export interface FCTaskModel {
 export interface ISkill {
     name: string,
     K?: number,
+    matching?: boolean
 }
 
 export interface ISubModule {
     name: string,
-    importance?: number
+    importance?: number,
+    matching?: boolean
 }
 
 export interface IDeveloper {

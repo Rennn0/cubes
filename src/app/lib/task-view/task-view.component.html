@@ -1,12 +1,19 @@
-<div >
+<div class="card-container">
     <ng-container *ngFor="let model of taskModels | async">        
         <div class="task-card">
-            <p-overlayPanel #op>
-                <ng-template pTemplate="content">
-                    <h1>{{model.description}}</h1>
+            <p-overlayPanel #op >
+                <ng-template pTemplate="content" >
+                        <app-detailed-view [modelData]="model"></app-detailed-view>
                 </ng-template>
             </p-overlayPanel>
-            <p-button (click)="op.toggle($event)" icon="pi pi-image" label="Show"></p-button>
+            <p-button 
+                (click)="op.toggle($event)" 
+                icon="pi pi-box" 
+                severity="secondary"
+                [label]="model.title"
+                size="large" 
+                [style]="{width:'100%', height:'100%'}">
+            </p-button>
         </div>
     </ng-container>
 </div>
