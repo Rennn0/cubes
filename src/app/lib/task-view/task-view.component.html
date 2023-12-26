@@ -1,8 +1,8 @@
 <div class="card-container">
     <ng-container *ngFor="let model of taskModels | async">        
         <div class="task-card">
-            <p-overlayPanel #op >
-                <ng-template pTemplate="content" >
+            <p-overlayPanel #op>
+                <ng-template pTemplate>
                         <app-detailed-view [modelData]="model"></app-detailed-view>
                 </ng-template>
             </p-overlayPanel>

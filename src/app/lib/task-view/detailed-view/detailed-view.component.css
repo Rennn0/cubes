@@ -1,9 +1,9 @@
 /* task-model-card.component.css */
 .task-model-card {
-    width: 400px;
+    width: 333px;
     height: auto;
     border-radius: 5px;
-    padding: 16px;
+    padding: 16px 25px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
