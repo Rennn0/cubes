@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   for_TF_Form!: FormGroup<FCTaskModel>;
   for_TF_Subtasks!: ISubtask[];
   //input data for Toolbox
-  for_T_ProjectName: string = "random title"
+  projectName: string = "random title"
 
 
   loading: boolean = true;
@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
 
   onCloseLoading(name: string) {
     this.loading = false;
-    this.for_T_ProjectName = name;
+    this.projectName = name;
     setTimeout(() => {
       this.displaySkeleton = false;
     }, 11111);

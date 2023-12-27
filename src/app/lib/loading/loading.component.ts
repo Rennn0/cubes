@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MainService } from '@lib/services/main.service';
 import { Message } from 'primeng/api';
@@ -18,21 +18,21 @@ import { Message } from 'primeng/api';
     ]),
   ],
 })
-export class LoadingComponent implements AfterViewInit {
+export class LoadingComponent implements OnInit, AfterViewInit {
   @ViewChild("myCanvas", { static: false }) myCanvas!: ElementRef<HTMLCanvasElement>;
   @Output() closeLoading = new EventEmitter<string>();
 
   private _context!: CanvasRenderingContext2D;
   private _raf: number | undefined;
   private _colors: string[] = [
-    "#0d1fe0", "#0d0c0d", "#ab0215",
-    "#000000", "#14213D", "#FCA311",
-    "#E5E5E5", "#41436A", "#984063",
-    "#F64668", "#FE9677", "#5c3c92"
+    "#1d4ed8", "#ef4444", "#22c55e",
+    "#374151", "#0ea5e9", "#e24c4c"
   ];
   private balls: any[] = [];
 
   title = "random title"
+  ballsCount: number = 10;
+  ballsRadius: number = 10;
   messages: Message[] = [];
   showIcon: boolean = false;
   projectName = new FormControl("", [Validators.required, Validators.minLength(3)]);
@@ -40,7 +40,11 @@ export class LoadingComponent implements AfterViewInit {
 
   constructor(private _main: MainService) { }
 
-  ngAfterViewInit(): void {
+
+  ngOnInit(): void {
+  }
+
+  load(): void {
     const canvas = this.myCanvas.nativeElement;
     if (canvas) {
       this._context = canvas.getContext("2d")!;
@@ -48,9 +52,11 @@ export class LoadingComponent implements AfterViewInit {
       this.draw();
     }
   }
+
+
   createBalls(): void {
-    for (let i = 0; i < 20; i++) {
-      const radius = 1.5;
+    for (let i = 0; i < this.ballsCount; i++) {
+      const radius = this.ballsRadius;
       const x = Math.random() * (this.myCanvas.nativeElement.width - 2 * radius) + radius;
       const y = Math.random() * (this.myCanvas.nativeElement.height - 2 * radius) + radius;
       const ball = {
@@ -157,5 +163,9 @@ export class LoadingComponent implements AfterViewInit {
 
   onClosePreload() {
     this.closeLoading.emit(this.projectName.value!);
+  }
+
+  ngAfterViewInit(): void {
+    this.load();
   }
 }

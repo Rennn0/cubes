@@ -1,7 +1,7 @@
 <ng-container *ngIf="!projectNameIsOk; else animatedText" >
     <div class="make-it-centered" (mouseover)="startAnimation()" (mouseout)="stopAnimation()" [@fadeOut]>
         <div class="container">
-            <div class="left">
+            <div class="loader-text">
                 <p-messages 
                     [(value)]="messages" 
                     [enableService]="false" 
@@ -15,7 +15,7 @@
                     <label for="title">Name for new project</label>
                 </span>
             </div>
-            <div class="right">
+            <div class="loader-ui">
                 <canvas #myCanvas class="myCanvas"></canvas>    
             </div>
         </div>

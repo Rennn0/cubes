@@ -35,16 +35,16 @@
         <p-button (click)="sidebarVisible = true" icon="pi pi-arrow-right"></p-button>
       </div>
       <div class="toolbox">
-        <app-toolbox
-          [projectName]="for_T_ProjectName">      
-        </app-toolbox>
+        <app-toolbox></app-toolbox>
       </div>
     </div>
 
     <div class="body">
-      <app-task-view>
-        
-      </app-task-view>
+      <app-task-view></app-task-view>
+
+      <div class="project-name-background">
+        {{projectName}}
+      </div>
     </div>
   </ng-template>
 

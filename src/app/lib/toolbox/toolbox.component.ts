@@ -10,7 +10,6 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
   providers: [DialogService]
 })
 export class ToolboxComponent {
-  @Input() projectName: string = "";
   items: MenuItem[] | undefined;
   ref!: DynamicDialogRef;
   constructor(private _dialog: DialogService) { }
