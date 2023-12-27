@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MainService } from '@lib/services/main.service';
 import { Message } from 'primeng/api';
@@ -21,7 +21,6 @@ import { Message } from 'primeng/api';
 export class LoadingComponent implements OnInit, AfterViewInit {
   @ViewChild("myCanvas", { static: false }) myCanvas!: ElementRef<HTMLCanvasElement>;
   @Output() closeLoading = new EventEmitter<string>();
-
   private _context!: CanvasRenderingContext2D;
   private _raf: number | undefined;
   private _colors: string[] = [
@@ -40,11 +39,11 @@ export class LoadingComponent implements OnInit, AfterViewInit {
 
   constructor(private _main: MainService) { }
 
-
   ngOnInit(): void {
+
   }
 
-  load(): void {
+  ngAfterViewInit(): void {
     const canvas = this.myCanvas.nativeElement;
     if (canvas) {
       this._context = canvas.getContext("2d")!;
@@ -52,7 +51,6 @@ export class LoadingComponent implements OnInit, AfterViewInit {
       this.draw();
     }
   }
-
 
   createBalls(): void {
     for (let i = 0; i < this.ballsCount; i++) {
@@ -132,6 +130,7 @@ export class LoadingComponent implements OnInit, AfterViewInit {
 
             otherBall.vx += ax;
             otherBall.vy += ay;
+            otherBall.radius = Math.random() * 10
 
             ball.changeColor(this._colors[Math.floor(Math.random() * this._colors.length)]);
             otherBall.changeColor(this._colors[Math.floor(Math.random() * this._colors.length)]);
@@ -165,7 +164,5 @@ export class LoadingComponent implements OnInit, AfterViewInit {
     this.closeLoading.emit(this.projectName.value!);
   }
 
-  ngAfterViewInit(): void {
-    this.load();
-  }
+
 }

@@ -1,5 +1,5 @@
 <ng-container *ngIf="!projectNameIsOk; else animatedText" >
-    <div class="make-it-centered" (mouseover)="startAnimation()" (mouseout)="stopAnimation()" [@fadeOut]>
+    <div class="make-it-centered" [@fadeOut]>
         <div class="container">
             <div class="loader-text">
                 <p-messages 
@@ -11,11 +11,12 @@
                 </p-messages>
                 <span class="p-input-icon-right p-float-label">
                     <i class="pi pi-spin pi-spinner" *ngIf="showIcon"></i>
-                    <input type="text" pInputText [formControl]="projectName" (keydown.enter)="onEnterKeyPress()"  />
+                    <input type="text" pInputText [formControl]="projectName" (keydown.enter)="onEnterKeyPress()" #needFocus />
+                    {{needFocus.focus()}}
                     <label for="title">Name for new project</label>
                 </span>
             </div>
-            <div class="loader-ui">
+            <div class="loader-ui" (mouseover)="startAnimation()" (mouseout)="stopAnimation()" >
                 <canvas #myCanvas class="myCanvas"></canvas>    
             </div>
         </div>
