@@ -10,26 +10,26 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
   providers: [DialogService]
 })
 export class ToolboxComponent {
-  items: MenuItem[] | undefined;
+  // items: MenuItem[] | undefined;
   ref!: DynamicDialogRef;
   constructor(private _dialog: DialogService) { }
 
   ngOnInit() {
-    this.items = [
-      {
-        label: 'Update',
-        icon: 'pi pi-refresh'
-      },
-      {
-        label: 'Delete',
-        icon: 'pi pi-times'
-      }
-    ];
+    // this.items = [
+    //   {
+    //     label: 'Update',
+    //     icon: 'pi pi-refresh'
+    //   },
+    //   {
+    //     label: 'Delete',
+    //     icon: 'pi pi-times'
+    //   }
+    // ];
   }
 
   openDialog() {
     this.ref = this._dialog.open(DialogComponent, {
-      header: "Relation Mapper",
+      header: "Resultat",
       footer: new Date(Date.now()).toDateString(),
       styleClass: "main-container",
     });

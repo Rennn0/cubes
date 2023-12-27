@@ -38,6 +38,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { TextPreloadComponent } from './loading/text-preload/text-preload.component';
 import { AnimatedCubeComponent } from './loading/animated-cube/animated-cube.component';
 import { DetailedVIewComponent } from './task-view/detailed-view/detailed-view.component';
+import { NgxTypedWriterModule } from "ngx-typed-writer";
 
 @NgModule({
     declarations: [
@@ -85,7 +86,8 @@ import { DetailedVIewComponent } from './task-view/detailed-view/detailed-view.c
         ToolbarModule,
         SplitButtonModule,
         CardModule,
-        SkeletonModule
+        SkeletonModule,
+        NgxTypedWriterModule
     ],
     providers: [
         MainService

@@ -92,10 +92,10 @@ export class LoadingComponent implements OnInit, AfterViewInit {
 
   draw(): void {
     // es kuds utovebs
-    this._context.clearRect(0, 0, this.myCanvas.nativeElement.width, this.myCanvas.nativeElement.height);
+    // this._context.clearRect(0, 0, this.myCanvas.nativeElement.width, this.myCanvas.nativeElement.height);
     //backis feri
-    // this._context.fillStyle = "rgba(255, 255, 255, 0.1)";
-    // this._context.fillRect(0, 0, this.myCanvas.nativeElement.width, this.myCanvas.nativeElement.height);
+    this._context.fillStyle = "rgba(255, 255, 255, 0.1)";
+    this._context.fillRect(0, 0, this.myCanvas.nativeElement.width, this.myCanvas.nativeElement.height);
 
     this.balls.forEach((ball, index) => {
       ball.draw(this._context);
@@ -128,9 +128,9 @@ export class LoadingComponent implements OnInit, AfterViewInit {
             ball.vx -= ax;
             ball.vy -= ay;
 
-            otherBall.vx += ax;
-            otherBall.vy += ay;
-            otherBall.radius = Math.random() * 10
+            otherBall.vx += ax / 5;
+            otherBall.vy += ay / 5;
+            otherBall.radius = Math.floor(Math.random() * 10)
 
             ball.changeColor(this._colors[Math.floor(Math.random() * this._colors.length)]);
             otherBall.changeColor(this._colors[Math.floor(Math.random() * this._colors.length)]);

@@ -1,12 +1,4 @@
 <div style="margin-top: 10px;">
-    <p-toggleButton 
-        [(ngModel)]="newTaskSwitch" 
-        [onLabel]="'New Module'" 
-        [offLabel]="'Delete'" 
-        [onIcon]="'pi pi-plus'" 
-        [offIcon]="'pi pi-trash'"
-    >
-    </p-toggleButton>
 
     <ng-container *ngIf="!newTaskSwitch; else existingTasksList">
             <app-form
@@ -20,11 +12,11 @@
         <p-scrollPanel>
             <p-accordion>
                 <!-- <ng-container *ngFor="let model of existingTasks">
-                    <p-accordionTab 
-                        [header]=model.title 
-                        pDraggable 
-                        [dragEffect]="'move'" 
-                        (onDragStart)="dragStart(model)" 
+                    <p-accordionTab
+                        [header]=model.title
+                        pDraggable
+                        [dragEffect]="'move'"
+                        (onDragStart)="dragStart(model)"
                         (onDragEnd)="dragEnd()">
                         <p>
                             {{model.description}}
@@ -32,6 +24,14 @@
                     </p-accordionTab>
                 </ng-container>    -->
             </p-accordion>
-        </p-scrollPanel> 
+        </p-scrollPanel>
     </ng-template>
+
+    <p-toggleButton
+        [(ngModel)]="newTaskSwitch"
+        [onLabel]="'New Module'"
+        [offLabel]="'Delete'"
+        [onIcon]="'pi pi-plus'"
+        [offIcon]="'pi pi-trash'">
+    </p-toggleButton>
 </div>

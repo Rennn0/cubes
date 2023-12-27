@@ -18,7 +18,7 @@ import { ButtonModule } from 'primeng/button';
     SplitterModule,
     SkeletonModule,
     LibModule,
-    ButtonModule
+    ButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
