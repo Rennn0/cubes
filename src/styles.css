@@ -50,7 +50,7 @@ body{
 
 
 
-
+/* CUBE ANIMATION STYLES */
 
 :root {
   --gap: 25%;
@@ -70,9 +70,6 @@ body{
   --bottomRight: translate(var(--gap), calc(var(--gap) * 0.57735));
 }
 
-body {
-  margin: 0;
-}
 
 .container {
   height: 100vh;

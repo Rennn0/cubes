@@ -49,8 +49,8 @@ export class LoadingComponent implements AfterViewInit {
     }
   }
   createBalls(): void {
-    for (let i = 0; i < 3; i++) {
-      const radius = 10;
+    for (let i = 0; i < 20; i++) {
+      const radius = 1.5;
       const x = Math.random() * (this.myCanvas.nativeElement.width - 2 * radius) + radius;
       const y = Math.random() * (this.myCanvas.nativeElement.height - 2 * radius) + radius;
       const ball = {
@@ -87,14 +87,16 @@ export class LoadingComponent implements AfterViewInit {
   }
 
   draw(): void {
-    // this._context.clearRect(0, 0, this.myCanvas.nativeElement.width, this.myCanvas.nativeElement.height);
-    this._context.fillStyle = "rgba(255, 255, 255, 0.1)";
-    this._context.fillRect(0, 0, this.myCanvas.nativeElement.width, this.myCanvas.nativeElement.height);
+    // es kuds utovebs
+    this._context.clearRect(0, 0, this.myCanvas.nativeElement.width, this.myCanvas.nativeElement.height);
+    //backis feri
+    // this._context.fillStyle = "rgba(255, 255, 255, 0.1)";
+    // this._context.fillRect(0, 0, this.myCanvas.nativeElement.width, this.myCanvas.nativeElement.height);
 
     this.balls.forEach((ball, index) => {
       ball.draw(this._context);
-      ball.x += ball.vx;
-      ball.y += ball.vy;
+      ball.x += (ball.vx) / 3;
+      ball.y += (ball.vy) / 3;
 
       if (ball.y + ball.vy + ball.radius > this.myCanvas.nativeElement.height || ball.y + ball.vy - ball.radius < 0) {
         ball.vy = -ball.vy;
@@ -116,8 +118,8 @@ export class LoadingComponent implements AfterViewInit {
             const targetX = ball.x + Math.cos(angle) * (ball.radius + otherBall.radius);
             const targetY = ball.y + Math.sin(angle) * (ball.radius + otherBall.radius);
 
-            const ax = (targetX - otherBall.x) * 0.1;
-            const ay = (targetY - otherBall.y) * 0.1;
+            const ax = (targetX - otherBall.x) * 0.5;
+            const ay = (targetY - otherBall.y) * 0.5;
 
             ball.vx -= ax;
             ball.vy -= ay;

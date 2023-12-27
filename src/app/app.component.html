@@ -1,10 +1,10 @@
-<ng-container *ngIf="!loading; else skeleton">
+<ng-container *ngIf="loading; else skeleton">
   <app-loading
   (closeLoading)="onCloseLoading($event)"></app-loading>
 </ng-container>
 
 <ng-template #skeleton>
-  <ng-container *ngIf="!displaySkeleton; else content">
+  <ng-container *ngIf="displaySkeleton; else content">
     <!-- <div class="skeleton-container">
       <div class="skeleton-left">
         <p-skeleton height="90%" width="90%"  [style]="{margin: '15px 0 0 15px'}"></p-skeleton>
